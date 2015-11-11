@@ -4,5 +4,7 @@ import(MTurkR)
 import(tcltk)
 importFrom(XML, xmlParse)
 importFrom(utils, browseURL)
-importFrom(grDevices, bringToTop)
 importFrom(curl, curl_escape)
+if (.Platform$OS.type=="windows") {
+    importFrom(grDevices, bringToTop)
+}

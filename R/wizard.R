@@ -3020,12 +3020,20 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                 } else { 
                     mine <- FALSE
                 }
+                if(as.character(tclvalue(returnall))=="1") {
+                    returnall <- TRUE
+                } else { 
+                    returnall <- FALSE
+                }
                 if(as.character(tclvalue(requestable))=="1") {
                     requestable <- TRUE
                 } else {
                     requestable <- FALSE
                 }
-                results <- SearchQualificationTypes(query=searchquery,only.mine=mine,only.requestable=requestable,
+                results <- SearchQualificationTypes(query=searchquery,
+                                                    only.mine = mine,
+                                                    only.requestable = requestable,
+                                                    return.all = returnall,
                                                     verbose=FALSE,sandbox=sboxval())
                 if(tclvalue(builtin)=="1"){
                     output <- ListQualificationTypes()
@@ -3053,8 +3061,8 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                 entryform <- tkframe(selectqualDialog)
                     r <- 1
                     scr <- ttkscrollbar(entryform,  command=function(...) tkyview(quallist,...))
-                    quallist <- tklistbox(    entryform, height=20, width=100, selectmode="single",
-                                            yscrollcommand=function(...) tkset(scr,...), background="white")
+                    quallist <- tklistbox(entryform, height=20, width=100, selectmode="single",
+                                          yscrollcommand=function(...) tkset(scr,...), background="white")
                     tkgrid(quallist, row=r, column=1, columnspan=2)
                     tkgrid(scr, row=r, column=3, sticky="nsw")
                 tkgrid(entryform)
@@ -3076,6 +3084,7 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
             tkwm.title(searchqualDialog, "Search for QualificationTypes")
             mine <- tclVar("1")
             requestable <- tclVar("0")
+            returnall <- tclVar("0")
             builtin <- tclVar("1")
             searchquery <- tclVar()
             aframe <- ttklabelframe(searchqualDialog, text = "Search Options")
@@ -3083,8 +3092,10 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                 tkgrid(ttklabel(aframe, text = "Only search my QualificationTypes"), row = 1, column = 2, sticky = "w")
                 tkgrid(ttkcheckbutton(aframe, variable=requestable), row = 2, column = 1, sticky = "e")
                 tkgrid(ttklabel(aframe, text = "Only search requestable QualificationTypes"), row = 2, column = 2, sticky = "w")
-                tkgrid(ttkcheckbutton(aframe, variable=builtin), row = 3, column = 1, sticky = "e")
-                tkgrid(ttklabel(aframe, text = "Include built-in QualificationTypes"), row = 3, column = 2, sticky = "w")
+                tkgrid(ttkcheckbutton(aframe, variable=returnall), row = 3, column = 1, sticky = "e")
+                tkgrid(ttklabel(aframe, text = "Return all matching QualificationTypes"), row = 3, column = 2, sticky = "w")
+                tkgrid(ttkcheckbutton(aframe, variable=builtin), row = 4, column = 1, sticky = "e")
+                tkgrid(ttklabel(aframe, text = "Include built-in QualificationTypes"), row = 4, column = 2, sticky = "w")
             bframe <- ttklabelframe(searchqualDialog, text = "Search Query (optional):")
                 tkgrid(wzentry(bframe, width = 50, textvariable=searchquery))
             tkgrid(aframe, stick = "w")

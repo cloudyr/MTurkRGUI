@@ -1,3 +1,9 @@
+# CHANGES TO MTurkRGUI 0.1.2 #
+
+## BUG FIXES ##
+
+* The `SearchQualificationTypes` dialog now now has a `return.all` argument. (h/t William Little)
+
 # CHANGES TO MTurkRGUI 0.1.1 #
 
 * Initial release.

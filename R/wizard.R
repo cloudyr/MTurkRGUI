@@ -2435,6 +2435,8 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                              AnswerKey=answertowrite,
                              TestDurationInSeconds=testduration )
                 assign("test", test, envir=wizardenv)
+                tkdestroy(testDialog)
+                invisible(NULL)
             }
             
             testDialog <- tktoplevel()
@@ -2447,6 +2449,9 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                 tkmark.set(test.entry,"insert","0.0")
                 tkgrid(test.entry, row = 1, column = 1, sticky = "nsew")
                 tkgrid(test.scroll, row = 1, column = 2, sticky = "nsew")
+                if (!is.null(wizardenv$test$Test)) {
+                    tkinsert(test.entry, "0.0", wizardenv$test$Test)
+                }
             bframe <- ttklabelframe(testDialog, text = "AnswerKey XML (optional):")
                 answer.scroll <- tkscrollbar(bframe, repeatinterval = 5,
                                              command = function(...){ tkyview(answer.entry, ...) })
@@ -2455,6 +2460,9 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                 tkmark.set(answer.entry,"insert","0.0")
                 tkgrid(answer.entry, row = 1, column = 1, sticky = "nsew")
                 tkgrid(answer.scroll, row = 1, column = 2, sticky = "nsew")
+                if (!is.null(wizardenv$test$AnswerKey)) {
+                    tkinsert(answer.entry, "0.0", wizardenv$test$AnswerKey)
+                }
             tkgrid(aframe, row = 1, column = 1, columnspan = 2, sticky = "nsew")
             tkgrid(bframe, row = 2, column = 1, columnspan = 2, sticky = "nsew")
             tkgrid.columnconfigure(aframe, 1, weight = 1)
@@ -2554,12 +2562,18 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                                      as.numeric(tclvalue(secs)))
                 } 
                 statselect <- statusopts[as.numeric(as.character(tkcurselection(statuslist)))+1] # listbox index starts at 0
-                results <- CreateQualificationType(name=tclvalue(name), description=tclvalue(desc),
-                                                   status=statselect, keywords = keywords,
+                results <- CreateQualificationType(name = tclvalue(name), 
+                                                   description = tclvalue(desc),
+                                                   status = statselect, 
+                                                   keywords = keywords,
                                                    retry.delay = delay,
-                                                   test = test, answerkey = answerkey, test.duration = test.duration,
-                                                   auto = auto, auto.value = auto.value,
-                                                   verbose = TRUE, sandbox=sboxval())
+                                                   test = test, 
+                                                   answerkey = answerkey, 
+                                                   test.duration = test.duration,
+                                                   auto = auto, 
+                                                   auto.value = auto.value,
+                                                   verbose = TRUE, 
+                                                   sandbox=sboxval())
                 tkdestroy(createqualDialog)
                 tkfocus(wizard)
             }

@@ -1,6 +1,6 @@
 Package: MTurkRGUI
-Version: 0.1.2
-Date: 2015-11-16
+Version: 0.1.3
+Date: 2015-11-18
 Title: A Graphical User Interface for MTurkR
 Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
                     email = "thosjleeper@gmail.com"))

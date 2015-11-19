@@ -2425,8 +2425,9 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
             storetest <- function()    {
                 testtowrite <- tclvalue(tkget(test.entry,"0.0","end"))
                 answertowrite <- tclvalue(tkget(answer.entry,"0.0","end"))
-                if(answertowrite=="")
+                if (!grepl("[[:alnum:]]", answertowrite)) {
                     answertowrite <- NULL
+                }
                 testduration <- seconds(as.numeric(tclvalue(days)),
                                         as.numeric(tclvalue(hours)),
                                         as.numeric(tclvalue(mins)),
@@ -2475,7 +2476,7 @@ function(style="tcltk", sandbox=getOption('MTurkR.sandbox')) {
                 days <- tclVar("0")
                 hours <- tclVar("0")
                 mins <- tclVar("0")
-                secs <- tclVar("0")
+                secs <- tclVar("30")
                 days.entry <- wzentry(cframe, width = 5, textvariable = days)
                 hours.entry <- wzentry(cframe, width = 5, textvariable = hours)
                 mins.entry <- wzentry(cframe, width = 5, textvariable = mins)

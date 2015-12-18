@@ -2,9 +2,11 @@
 export("wizard")
 import(MTurkR)
 import(tcltk)
-importFrom(XML, xmlParse)
-importFrom(utils, browseURL)
-importFrom(curl, curl_escape)
+importFrom(XML, "xmlParse")
+importFrom(utils, "browseURL")
+importFrom(curl, "curl_escape")
+importFrom("stats", "setNames")
+importFrom("utils", "packageDescription", "write.csv", "write.table")
 if (.Platform$OS.type=="windows") {
-    importFrom(grDevices, bringToTop)
+    importFrom(grDevices, "bringToTop")
 }

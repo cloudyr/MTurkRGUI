@@ -1,3 +1,9 @@
+# CHANGES TO MTurkRGUI 0.1.4 #
+
+## SIGNIFICANT USER-VISIBLE CHANGES ##
+
+* Use environment variables rather than options() to store AWS credentials. (#1)
+
 # CHANGES TO MTurkRGUI 0.1.2 #
 
 ## BUG FIXES ##

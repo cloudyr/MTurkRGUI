@@ -8,5 +8,5 @@ Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
 Imports: MTurkR, tcltk, grDevices, utils, XML, curl
 Description: A graphical user interface (GUI) for the MTurkR package.
 License: GPL-2
-URL: https://github.com/leeper/MTurkRGUI
-BugReports: https://github.com/leeper/MTurkRGUI/issues
+URL: https://github.com/cloudyr/MTurkRGUI
+BugReports: https://github.com/cloudyr/MTurkRGUI/issues

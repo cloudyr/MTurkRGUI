@@ -1,5 +1,4 @@
 # imports
-export("wizard")
 import(MTurkR)
 import(tcltk)
 importFrom(XML, "xmlParse")
@@ -10,3 +9,8 @@ importFrom("utils", "packageDescription", "write.csv", "write.table")
 if (.Platform$OS.type=="windows") {
     importFrom(grDevices, "bringToTop")
 }
+
+# exports
+export("wizard")
+export("mturkr.wizard")
+export("MTurkR.Wizard")

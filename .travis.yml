@@ -1,5 +1,5 @@
 language: r
-sudo: false
+sudo: require
 cache: packages
 before_script:
   - "export DISPLAY=:99.0"

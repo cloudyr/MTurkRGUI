@@ -2,15 +2,16 @@ language: r
 sudo: require
 cache: packages
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 r_github_packages:
 - leeper/MTurkR
 - eddelbuettel/drat
 after_success:
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash drat.sh
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
+  drat.sh
 env:
   global:
   - secure: Kg4ZQvRHolP5lKs8HTwU7Tq8GoDFsL67HWwcpRSeIEJRxPiEo7Fz2OwsdRfXcG69Zl2PP6089HwAylrxoe4YiZUIFJPER4gJnkRz93Iq/K4QinBmtMzIDwIOds4y0pq0VFZJIQMNrgMtaIZFZyylYxfZbrSK25ynCGG/oFvaFGU=
-  - secure: f/v6ccGCLCA6SgQCSbqLi5S85x7TX6qikczRxSTIgF7tcdqxOfGPpoRWePywgSDwRrFCJjMSYrLvA9QdKvS6Et7VHOb9ue7VDcYDMbBD2koucw97FxBDFfNKC/XqZ2lnDnnTY90dOSFUjZZCR2AELdUQ7016iEp4he+ZkAr1mYZQMQhG2JBZK6sDAbsCl38WPax0vZL0N31OYaMaxwfOHIcVl8jZw2eDpLzzt1XNCznp76VEsDVdb/C8tSxsOjCq1jypCweqjNCd32hDpf52wr1DCKlaUBnCtBG/2afLnr5VPfpjMa1i+gLAkFlZV89r/MRkvxQXIiQWKF5v3tDNcsRiomVRVBTkQq+cxN90uvXI+cHX7x+v1Q0pulIFH+9EHN4J2Po064yZS4cvnXxDV5eP6PlpSGufPjsYGzYSTa9RXhtgqVV+xTPbYl/TWYeN6XG66hVC/xF5UuDNwtOexshiLZGSgrM3KZW4MfnkDiTjn7uBjNZE17P0PC53WK3IQkXVyF5gFJLN8z3SXBby8E87xAbt89+UaSLKE/aN9Mr6WGAMU6enzrQWEGSbfeU83K9aMQJ/r8/IhgVP5/5GoW9BcGB5Jdvo17vppsL74TnfHCpozB1WQL1D8Jts2qm4bdV6LDtA5oMtSCGTso0VduPWbFkrJ4UFzCTYWEjI2us=
+  - secure: IjOpSS6gkpVW7j9uSSjlCRhWR925LA1E8J8GaDeY6sYoxhtMBOS1UNLcvpIYVNcv0ahJm2WoqG8JzYjQ2JK9eou/4BZ4lnR5qsYlQi+8s86ZQtEq6AWl5+2tieGaVYh0nPqgfTxl0rLrhR8NeliRy9lSyrnK1gSnJ4jKGJ1N/lOZt5tN60mm3+J1B+BMi6mUUCcyXhCRWMbirEHagmS32NpfWb4gGF2eo3hpWjghudWy3uz8f1pVRax+O6b2IQ23kLKI5myCtu8r0ElGue0B23/Cuj8jun0vPX6Ya4DwJF1pppCKbIGDvj0qva44FRg51fYyuXsSTnzTRlTWtPzxOQuDqJmaPg2zlKbreNl4xfwsN/qLNYDSbpMzd2H1Wc5vXFGVbOM3xCbxElbaMQj9bVKgUDndnOahvZG0YNiPrPSmMVcKZCyYH65eoStyDpiL+CGmacNKza+hUKwvPUm91yxdYV/lF9IvhMVIQWaTiDjpB6cTKZ1UFmVaEtgTlk954O31xGnUfg5181MOYj9roUjXbnhdxcdYZn6zQgNvZRh9JscWJYmtggBn553B9peNawWbxEfdUjqDoXyhcOjyF0tcx4uwXzioithyiQPVoQ4E4MMK9bhZ+tKrRU76FCEwUWul/2UrODcaSxp5MmpUY1Z8WWnWC1SkiQVNtD3wYF4=

@@ -2,8 +2,11 @@ Package: MTurkRGUI
 Version: 0.1.5
 Date: 2015-12-18
 Title: A Graphical User Interface for MTurkR
-Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
-                    email = "thosjleeper@gmail.com"))
+Authors@R: c(person("Thomas J.", "Leeper",
+                    role = c("aut", "cre"), 
+                    email = "thosjleeper@gmail.com",
+                    comment = c(ORCID = "0000-0003-4097-6326"))
+             )
 Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
 Imports: MTurkR, tcltk, grDevices, utils, XML, curl
 Description: A graphical user interface (GUI) for the MTurkR package.
